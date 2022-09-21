@@ -9,7 +9,7 @@ class PrettyConsoleOutput implements OutputInterface {
     private $climate;
 
     public function __construct() {
-        $this->climate = new League\CLImate\CLImate();
+        $this->climate = new \League\CLImate\CLImate();
 
     }
     /**
