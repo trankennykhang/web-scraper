@@ -11,6 +11,6 @@ abstract class SiteHandler {
         $this->browser = $browser;
     }
     public function get(string $url) {
-        return $this->browser->get($url);
+        return $this->browser->loadPage($url);
     }
 }

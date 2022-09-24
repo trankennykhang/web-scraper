@@ -16,6 +16,13 @@ class PantherScrapCommand extends ScrapCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $client = Client::createChromeClient();
+        
+        $site = $input->getArgument("site");
+        $action = "get";
+        $data = $input->getArgument("site");
+        
+        $handler = new MarketIndexHandler($client);
+        $result = $handler->$action($data);
 
         // How to inject the $output
         $output->write("test");
