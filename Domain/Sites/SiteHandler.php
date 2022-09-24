@@ -1,7 +1,7 @@
 <?php 
-namespace Kupman\Scraper\Domain;
+namespace Scraper\Domain\Sites;
 
-use Kupman\Scraper\Domain\VirtualBrowser;
+use Scraper\Domain\VirtualBrowser;
 
 abstract class SiteHandler {
 

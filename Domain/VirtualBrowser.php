@@ -1,5 +1,5 @@
 <?php 
-namespace Kupman\Scraper\Domain;
+namespace Scrapper\Domain;
 
 interface VirtualBrowser {
     public function loadPage(string $url);

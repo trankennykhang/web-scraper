@@ -1,7 +1,7 @@
 <?php
-namespace Kupman\Scraper\Commands;
+namespace Scraper\App\Commands;
 
-use Kupman\Scraper\Domain\VirtualBrowser;
+use Scraper\Domain\VirtualBrowser;
 use Symfony\Component\Panther\Client;
 
 class PantherBrowser implements VirtualBrowser {

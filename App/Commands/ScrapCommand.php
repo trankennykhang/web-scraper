@@ -1,12 +1,13 @@
 <?php 
-namespace Kupman\Scraper\Commands;
+namespace Scraper\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Panther\Client;
-use Kupman\Scraper\Outputs\PrettyConsoleOutput;
 use Symfony\Component\Console\Input\InputArgument;
+
+use Scraper\Outputs\PrettyConsoleOutput;
 // the name of the command is what users type after "php bin/console"
 abstract class ScrapCommand extends Command
 {

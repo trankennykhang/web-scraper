@@ -1,7 +1,7 @@
 <?php
-namespace Kupman\Scraper\Sites;
+namespace Scraper\Domain\Sites;
 
-use Kupman\Scraper\Domain\SiteHandler;
+use Scraper\Domain\SiteHandler;
 
 class MarketIndexHandler extends SiteHandler {
     

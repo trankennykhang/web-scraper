@@ -1,5 +1,5 @@
 <?php
-namespace Kupman\Scraper\Outputs;
+namespace Scraper\Outputs;
 
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
