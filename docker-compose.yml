@@ -1,0 +1,8 @@
+version: "1.0"
+services:
+  scrapper:
+    build: .
+    ports:
+      - "8010:80"
+    volumes:
+      - ./:/var/www/html
