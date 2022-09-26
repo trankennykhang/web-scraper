@@ -1,7 +1,7 @@
 <?php
 namespace Scraper\Domain\Sites;
 
-use Scraper\Domain\SiteHandler;
+use Scraper\Domain\Sites\SiteHandler;
 
 class MarketIndexHandler extends SiteHandler {
     

@@ -1,8 +1,9 @@
 version: "1.0"
 services:
-  scrapper:
+  app:
     build: .
     ports:
       - "8010:80"
     volumes:
       - ./:/var/www/html
+    entrypoint: init.sh

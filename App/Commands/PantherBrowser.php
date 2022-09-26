@@ -15,4 +15,12 @@ class PantherBrowser implements VirtualBrowser {
         $crawler = $this->client->request("GET", $url);
         return $crawler->html();
     }
+    public function submitForm()
+    {
+        
+    }
+    public function clickLink()
+    {
+        
+    }
 }
