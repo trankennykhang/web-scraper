@@ -1,5 +1,5 @@
 <?php
-return function() {
+function config() {
     return [
         "NAMESPACE_SITES" => "\\Scraper\\Domain\Sites\\",
     ];

@@ -1,6 +1,6 @@
 <?php
-use Scraper\Commands\PantherScrapCommand;
-use Scraper\Commands\SeleniumCommand;
+use Scraper\App\Commands\PantherScrapCommand;
+use Scraper\App\Commands\SeleniumCommand;
 
 $config = include(__DIR__ . "/configuration.php");
 

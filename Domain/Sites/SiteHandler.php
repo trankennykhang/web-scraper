@@ -5,12 +5,14 @@ use Scraper\Domain\VirtualBrowser;
 
 abstract class SiteHandler {
 
-    private VirtualBrowser $browser;
+    public string $endpoint = "";
+
+    protected VirtualBrowser $browser;
 
     public function __construct(VirtualBrowser $browser) {
         $this->browser = $browser;
     }
-    public function get(string $url) {
-        return $this->browser->loadPage($url);
+    protected function buildUrl(string $target) {
+        return $this->endpoint . $target;
     }
 }

@@ -1,5 +1,5 @@
 <?php 
-namespace Scraper\Commands;
+namespace Scraper\App\Commands;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -18,20 +18,23 @@ class PantherScrapCommand extends ScrapCommand
     {
         // Prepare the data
         // Set the default action
-        $action = "get";
+        $action = "query";
         // Get the site to query data
         $site = $input->getArgument("site");
         // Get other data to query the site
-        $data = $input->getArgument("data");
+        // mix data type
+        $json = json_decode($input->getOption("json"));
+        if (isset($json->action)) {
+            $action = $json->action;
+        }
+        $symbol = $json->symbol;
         
-        // Create the browser client
-        $client = Client::createChromeClient();
-
         // Use the reflection to configure the site
         try {
-            //$reflection = new \ReflectionClass($config()['NAMESPACE_SITES'] . $site . "Handler");
+            $class = config()['NAMESPACE_SITES'] . ucfirst($site) . "Handler";
+            $siteClass = new $class(PantherBrowser::createChromePantherBrowser());
             
-            //$result = $handler->$action($data);
+            $result = $siteClass->$action($symbol);
         } catch (\ReflectionException $e) {
 
         }

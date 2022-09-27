@@ -5,16 +5,17 @@ use Scraper\Domain\Sites\SiteHandler;
 
 class MarketIndexHandler extends SiteHandler {
     
-    public const URL = "";
+    public string $endpoint = "https://www.marketindex.com.au/asx/";
+    
     public function query(string $symbol) {
-        $html = $this->get($symbol);
+
+        $html =  $this->browser->loadPage($this->buildUrl($symbol));
         // use php query or similar to query the data
         print_r($html);
     }
-    public function getTodayPrice(string $symbol) {
-        $this->browser->loadPage($url);
-        $this->browser->waitFor();
+    public function price(string $symbol) {
+        $this->browser->loadPage($this->buildUrl($symbol));
+       // $this->browser->waitFor();
         
     }
-
 }
