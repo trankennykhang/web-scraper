@@ -18,10 +18,14 @@ class MarketIndexHandler extends SiteHandler {
         $html = $this->browser->loadPage($this->buildUrl($symbol));
         $this->crawler->convertHtml($html);
         $value = $this->crawler->getValueAt([
-            'tag' => 'span',
-            'attrib' => [
-                'name' => 'data-quoteapi',
-                'value' => 'price'
+            [
+                'element' => 'span',
+                'attributes' => [
+                    [
+                        'name' => 'data-quoteapi',
+                        'value' => 'price'
+                    ]
+                ]
             ]
         ]);
         return $value;
