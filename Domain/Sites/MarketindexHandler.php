@@ -1,7 +1,8 @@
 <?php
 namespace Scraper\Domain\Sites;
 
-use Scraper\Domain\Sites\SiteHandler;
+use Scraper\Domain\Base\SiteHandler;
+use Scraper\Domain\Base\VirtualCrawler;
 
 class MarketIndexHandler extends SiteHandler {
     
@@ -14,8 +15,16 @@ class MarketIndexHandler extends SiteHandler {
         print_r($html);
     }
     public function price(string $symbol) {
-        $this->browser->loadPage($this->buildUrl($symbol));
-       // $this->browser->waitFor();
+        $html = $this->browser->loadPage($this->buildUrl($symbol));
+        $this->crawler->convertHtml($html);
+        $value = $this->crawler->getValueAt([
+            'tag' => 'span',
+            'attrib' => [
+                'name' => 'data-quoteapi',
+                'value' => 'price'
+            ]
+        ]);
+        return $value;
         
     }
 }

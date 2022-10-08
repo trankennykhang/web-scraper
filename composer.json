@@ -3,7 +3,8 @@
         "symfony/panther": "^0.9.0",
         "league/climate": "^3.8",
         "league/csv": "^9.8",
-        "symfony/console": "^6.0"
+        "symfony/console": "^6.0",
+        "symfony/css-selector": "^6.0"
     },
     "require-dev": {
         "dbrekelmans/bdi": "^1.0"

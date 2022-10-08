@@ -1,5 +1,5 @@
 <?php 
-namespace Scraper\Domain;
+namespace Scraper\Domain\Base;
 
 interface VirtualBrowser {
     public function loadPage(string $url);

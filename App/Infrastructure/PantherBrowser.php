@@ -1,7 +1,7 @@
 <?php
-namespace Scraper\App\Commands;
+namespace Scraper\App\Infrastructure;
 
-use Scraper\Domain\VirtualBrowser;
+use Scraper\Domain\Base\VirtualBrowser;
 use Symfony\Component\Panther\Client;
 
 class PantherBrowser implements VirtualBrowser {
@@ -17,6 +17,7 @@ class PantherBrowser implements VirtualBrowser {
     }
     public function loadPage(string $url) {
         $crawler = $this->client->request("GET", $url);
+        sleep(10);
         return $crawler->html();
     }
     public function waitFor(string $tag) {

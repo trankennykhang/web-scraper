@@ -5,10 +5,12 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Panther\Client;
 use Symfony\Component\Console\Input\InputArgument;
 
 use Scraper\Outputs\PrettyConsoleOutput;
+use Scraper\App\Infrastructure\PantherCrawler;
+use Scraper\App\Infrastructure\PantherBrowser;
+
 // the name of the command is what users type after "php bin/console"
 
 #[AsCommand(name: 'panther', description: 'Scrap web for data')]
@@ -32,9 +34,10 @@ class PantherScrapCommand extends ScrapCommand
         // Use the reflection to configure the site
         try {
             $class = config()['NAMESPACE_SITES'] . ucfirst($site) . "Handler";
-            $siteClass = new $class(PantherBrowser::createChromePantherBrowser());
+            $siteClass = new $class(PantherBrowser::createChromePantherBrowser(), new PantherCrawler());
             
             $result = $siteClass->$action($symbol);
+            $output->writeln($result);
         } catch (\ReflectionException $e) {
 
         }
