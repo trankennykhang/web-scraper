@@ -1,4 +1,24 @@
 <?php
+class a {
+    public $num = 0;
+    public function setValue($v) {
+        $this->num = $v;
+    }
+    public function get() {
+        print $this->num;
+    }
+}
+class b {
+    public function set(a $test) {
+        $test->setValue(5);
+    }
+}
+$test = new a();
+$test->get();
+$t2 = new b();
+$t2->set($test);
+$test->get();
+die();
 require __DIR__.'/vendor/autoload.php'; // Composer's autoloader
 
 use Symfony\Component\Panther\Client;

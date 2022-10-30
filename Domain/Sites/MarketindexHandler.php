@@ -3,6 +3,7 @@ namespace Scraper\Domain\Sites;
 
 use Scraper\Domain\Base\SiteHandler;
 use Scraper\Domain\Base\VirtualCrawler;
+use Scraper\Domain\Helper\Filter;
 
 class MarketIndexHandler extends SiteHandler {
     
@@ -17,17 +18,11 @@ class MarketIndexHandler extends SiteHandler {
     public function price(string $symbol) {
         $html = $this->browser->loadPage($this->buildUrl($symbol));
         $this->crawler->convertHtml($html);
-        $value = $this->crawler->getValueAt([
-            [
-                'element' => 'span',
-                'attributes' => [
-                    [
-                        'name' => 'data-quoteapi',
-                        'value' => 'price'
-                    ]
-                ]
-            ]
-        ]);
+        $filter = Filter::getInstance();
+        $filter->addElement('span')
+            ->withAttribute('data-quoteapi', 'price');
+            
+        $value = $this->crawler->getValueAt($filter);
         return $value;
         
     }

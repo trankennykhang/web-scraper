@@ -7,6 +7,7 @@
         "symfony/css-selector": "^6.0"
     },
     "require-dev": {
-        "dbrekelmans/bdi": "^1.0"
+        "dbrekelmans/bdi": "^1.0",
+        "phpstan/phpstan":"^1.0"
     }
 }

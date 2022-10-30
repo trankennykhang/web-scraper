@@ -25,3 +25,7 @@ COPY docker/composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
 COPY docker/init.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/init.sh
+# Add phpdocumentor
+RUN wget https://phpdoc.org/phpDocumentor.phar
+RUN chmod +x phpDocumentor.phar
+RUN mv phpDocumentor.phar /usr/local/bin/phpDocumentor
