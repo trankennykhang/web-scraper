@@ -1,8 +1,7 @@
 <?php
 namespace Scraper\Domain\Helper;
 
-class Filter {
-    private array $elements;
+class Element {
     private Element $element;
     private array $attributes;
     private string $id;

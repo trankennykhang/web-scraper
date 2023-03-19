@@ -5,7 +5,7 @@ use Scraper\Domain\Helper\Filter;
 
 class CssSelector {
     public static function convert(Filter $filter) {
-        $str = "";
-        return $str;
+        // Handle filter and convert to css style
+        return "div >"
     }
 }
