@@ -17,9 +17,11 @@ abstract class SiteHandler {
 
     protected VirtualBrowser $browser;
     protected VirtualCrawler $crawler;
-    public function __construct(VirtualBrowser $browser, VirtualCrawler $crawler) {
+    protected Converter $converter;
+    public function __construct(VirtualBrowser $browser, VirtualCrawler $crawler, Converter $converter) {
         $this->browser = $browser;
         $this->crawler = $crawler;
+        $this->converter = $converter;
     }
     protected function buildUrl(string $target) {
         return $this->endpoint . $target;
