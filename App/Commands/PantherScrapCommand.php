@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Scraper\Outputs\PrettyConsoleOutput;
 use Scraper\App\Infrastructure\PantherCrawler;
 use Scraper\App\Infrastructure\PantherBrowser;
-use Scraper\Domain\Helper\CssSelectorConverter;
+use Scraper\App\Helper\CssSelector;
 
 // the name of the command is what users type after "php bin/console"
 
@@ -35,7 +35,7 @@ class PantherScrapCommand extends ScrapCommand
         // Use the reflection to configure the site
         try {
             $class = config()['NAMESPACE_SITES'] . ucfirst($site) . "Handler";
-            $siteClass = new $class(PantherBrowser::createChromePantherBrowser(), new PantherCrawler(), new CssSelectorConverter);
+            $siteClass = new $class(PantherBrowser::createChromePantherBrowser(), new PantherCrawler(), new CssSelector());
             
             $result = $siteClass->$action($symbol);
             $output->writeln($result);

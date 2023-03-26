@@ -1,2 +1,2 @@
 #!/bin/bash
-php app.php panther marketindex --json='{"action":"price","symbol":"cba"}'
+php app.php panther yahoofinance --json='{"action":"price","symbol":"cba"}'

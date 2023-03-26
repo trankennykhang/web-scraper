@@ -5,9 +5,9 @@ use Scraper\Domain\Base\SiteHandler;
 use Scraper\Domain\Base\VirtualCrawler;
 use Scraper\Domain\Helper\Filter;
 
-class MarketIndexHandler extends SiteHandler {
+class YahooFinanceHandler extends SiteHandler {
     
-    public string $endpoint = "https://www.marketindex.com.au/asx/";
+    public string $endpoint = "https://www2.asx.com.au/markets/company/";
     
     public function query(string $symbol) {
 
@@ -16,19 +16,20 @@ class MarketIndexHandler extends SiteHandler {
         print_r($html);
     }
     public function price(string $symbol) {
+        //$symbol .= ".AX";
         $html = $this->browser->loadPage($this->buildUrl($symbol));
         $this->crawler->convertHtml($html);
         $filter = Filter::getInstance();
         $filter->setConverter($this->converter);
         $filter->addFilterArray([
-            'element' => 'span',
+            'element' => 'fin-streamer',
             'attributes' => [
-                'data-quoteapi' => 'price'
+                'data-symbol' => $symbol
             ]
         ]);
             
         $value = $this->crawler->getValueAt($filter);
-        return $value;
+        return 123;//clear$value;
         
     }
     protected function buildUrl(string $symbol) {

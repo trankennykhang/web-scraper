@@ -23,7 +23,5 @@ abstract class SiteHandler {
         $this->crawler = $crawler;
         $this->converter = $converter;
     }
-    protected function buildUrl(string $target) {
-        return $this->endpoint . $target;
-    }
+    abstract protected function buildUrl(string $symbol);
 }
