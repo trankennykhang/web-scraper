@@ -14,6 +14,8 @@ class PantherCrawler implements VirtualCrawler {
     }
     public function getValueAt(Filter $filter) {
         // filter method use the CSS style selector
+        print $filter->convert();
+        die();
         $text = $this->crawler->filter($filter->convert());//->innerText();
         print_r($text);
         //return str_replace("$", "", $text);

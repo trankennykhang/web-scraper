@@ -7,6 +7,21 @@ use Scraper\Domain\Base\Converter;
 class CssSelector implements Converter{
     public function convert(IFilter $filter): string {
         // Handle filter and convert to css style
-        return "#company-header > div > div > div > div";
+        $str = "";
+        if ($filter->hasTag()) {
+            $str = $filter->getTag();
+        }
+        if ($filter->hasId()) {
+            $str .= '#' . $filter->getId();
+        }
+        if ($filter->hasAttributes()) {
+
+        }
+        if ($filter->hasElement()) {
+            $str .= '>'. $filter->getElement()->convert();
+
+        } 
+        //return "#company-header > div > div > div > div";
+        return $str;
     }
 }

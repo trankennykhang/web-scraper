@@ -6,26 +6,40 @@ use Scraper\Domain\Base\IFilter;
 
 class Element implements IFilter {
     protected Element $element;
-    private string $tag;
-    private array $attributes;
-    private string $id;
-    private string $class;
-    private Converter $converter;
+    protected string $tag;
+    protected array $attributes;
+    protected string $id;
+    protected string $class;
+    protected Converter $converter;
 
     public function reset() {
 
     }
-    public function addElement(Element $element) {
-        $this->element = $element;
-        return $this;
+    public function getElement() {
+        return $this->element;
+    }
+    public function hasElement() {
+        return isset($this->element);
     }
     public function addTag(string $tag) {
         $this->tag = $tag;
         return $this;
     }
+    public function getTag() {
+        return $this->tag;
+    }
+    public function hasTag() {
+        return isset($this->tag);
+    }
     public function addId(string $id) {
         $this->id = $id;
         return $this;
+    }
+    public function getId() {
+        return $this->id;
+    }
+    public function hasId() {
+        return isset($this->id);
     }
     public function addClass(string $class) {
         $this->class = $class;
@@ -34,6 +48,9 @@ class Element implements IFilter {
     public function addAttribute($name, $value) {
         $this->attributes[$name] = $value;
         return $this;
+    }
+    public function hasAttributes() {
+        return false;
     }
     public function setConverter(Converter $con) {
         $this->converter = $con;
@@ -45,17 +62,19 @@ class Element implements IFilter {
     public function addFilterArray(array $arr) {
         foreach ($arr as $key => $value) {
             if ($key == "element") {
-                if (!is_array($value)) {
-                    // add standard element
-                    $this->element = new Element();
-                    $this->element->addTag($value);
-                } else {
-                    $this->element->addFilterArray($value);
-                }
+                $this->element = new Element();
+                $this->element->setConverter($this->converter);
+                $this->element->addFilterArray($value);
+            }
+            if ($key == 'tag') {
+                $this->tag = $value;
+            }
+            if ($key == 'id') {
+                $this->id = $value;
             }
             if ($key == "attributes") {
                 foreach ($value as $k=>$v) {
-                    $this->element->addAttribute($k, $v);
+                    $this->addAttribute($k, $v);
                 }
             }
         }

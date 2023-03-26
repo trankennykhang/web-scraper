@@ -5,7 +5,7 @@ use Scraper\Domain\Base\SiteHandler;
 use Scraper\Domain\Base\VirtualCrawler;
 use Scraper\Domain\Helper\Filter;
 
-class YahooFinanceHandler extends SiteHandler {
+class YahoofinanceHandler extends SiteHandler {
     
     public string $endpoint = "https://www2.asx.com.au/markets/company/";
     
@@ -22,10 +22,19 @@ class YahooFinanceHandler extends SiteHandler {
         $filter = Filter::getInstance();
         $filter->setConverter($this->converter);
         $filter->addFilterArray([
-            'element' => 'fin-streamer',
-            'attributes' => [
-                'data-symbol' => $symbol
-            ]
+            'element' => [
+                'tag' => 'div',
+                'element' => [
+                    'tag' => 'div',
+                    'element' => [
+                        'tag' => 'div',
+                        'element' => [
+                            'tag' => 'div'
+                        ]
+                    ]
+                ]
+            ],
+            'id' => 'company-header',
         ]);
             
         $value = $this->crawler->getValueAt($filter);
