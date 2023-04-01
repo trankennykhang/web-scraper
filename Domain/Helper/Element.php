@@ -45,6 +45,12 @@ class Element implements IFilter {
         $this->class = $class;
         return $this;
     }
+    public function getClass() {
+        return $this->class;
+    }
+    public function hasClass() {
+        return isset($this->class);
+    }
     public function addAttribute($name, $value) {
         $this->attributes[$name] = $value;
         return $this;
@@ -71,6 +77,9 @@ class Element implements IFilter {
             }
             if ($key == 'id') {
                 $this->id = $value;
+            }
+            if ($key == 'class') {
+                $this->class = $value;
             }
             if ($key == "attributes") {
                 foreach ($value as $k=>$v) {

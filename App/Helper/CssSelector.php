@@ -14,6 +14,9 @@ class CssSelector implements Converter{
         if ($filter->hasId()) {
             $str .= '#' . $filter->getId();
         }
+        if ($filter->hasClass()) {
+            $str .= '.' . $filter->getClass();
+        }
         if ($filter->hasAttributes()) {
 
         }

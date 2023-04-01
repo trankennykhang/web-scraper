@@ -4,7 +4,8 @@
         "league/climate": "^3.8",
         "league/csv": "^9.8",
         "symfony/console": "^6.0",
-        "symfony/css-selector": "^6.0"
+        "symfony/css-selector": "^6.0",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
         "dbrekelmans/bdi": "^1.0",

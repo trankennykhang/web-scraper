@@ -5,7 +5,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use Scraper\Domain\Base\VirtualCrawler;
 use Scraper\Domain\Helper\Filter;
 
-class PantherCrawler implements VirtualCrawler {
+class GuzzleCrawler implements VirtualCrawler {
 
     // Symfony DomCrawler
     private Crawler $crawler; 
