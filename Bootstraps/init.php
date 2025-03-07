@@ -1,12 +1,13 @@
 <?php
-use Scraper\App\Commands\PantherScrapCommand;
-use Scraper\App\Commands\GuzzleScrapCommand;
-use Scraper\App\Commands\SeleniumCommand;
+use Scraper\Commands\PantherScrapCommand;
+use Scraper\Commands\GuzzleScrapCommand;
+use Scraper\Commands\SeleniumCommand;
 
-$config = include(__DIR__ . "/configuration.php");
+$config = include(__DIR__ . "/config.php");
 
-$application->add(new PantherScrapCommand);
-$application->add(new GuzzleScrapCommand);
-//$application->add(new SeleniumCommand);
+$app->add(new PantherScrapCommand);
+$app->add(new GuzzleScrapCommand);
+$app->add(new CurlScrap)
+//$app->add(new SeleniumCommand);
 
 ?>

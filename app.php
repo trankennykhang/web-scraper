@@ -4,11 +4,11 @@ require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$app = new Application();
 
 require __DIR__.'/Bootstraps/autoload.php';
 require __DIR__.'/Bootstraps/init.php';
 
-$application->run();
+$app->run();
 
 ?>
